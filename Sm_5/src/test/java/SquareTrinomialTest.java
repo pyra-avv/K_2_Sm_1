@@ -26,8 +26,19 @@ class SquareTrinomialTest {
         assertEquals(0, a.Discriminant());
         assertEquals(16, b.Discriminant());
     }
-
     @Test
     void multipliers() {
+        SquareTrinomial a = new SquareTrinomial(1, -4, 4); // 2
+        SquareTrinomial b = new SquareTrinomial(1, -6, 5); // 1 5
+        SquareTrinomial c = new SquareTrinomial(6, 0, 0); // 0
+        SquareTrinomial d = new SquareTrinomial(1, 4, 0); // 0 -4
+        Polynomial[] arrA = { new Polynomial(new double[] { 2, 1 }), new Polynomial(new double[] { 2, 1 }) };
+        Polynomial[] arrB = { new Polynomial(new double[] { 1, 1 }), new Polynomial(new double[] { 5, 1 }) };
+        Polynomial[] arrC = { new Polynomial(new double[] { 0, 0, 1 }) };
+        Polynomial[] arrD = { new Polynomial(new double[] { -4, 1 }), new Polynomial(new double[] { 0, 1 }) };
+        assertArrayEquals(arrA, a.Multipliers());
+        assertArrayEquals(arrB, b.Multipliers());
+        assertArrayEquals(arrC, c.Multipliers());
+        assertArrayEquals(arrD, d.Multipliers());
     }
 }

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Polynomial {
     private final double[] coefficient;
     public Polynomial(double[] arr) { // Конструктор (по массиву коэффициентов)
@@ -56,6 +58,17 @@ public class Polynomial {
         }
         return str.toString();
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Polynomial that = (Polynomial) o;
+        return Arrays.equals(coefficient, that.coefficient);
+    }
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(coefficient);
+    }
     public double getI(int i) {
         return coefficient[i];
     }
@@ -80,39 +93,18 @@ class SquareTrinomial extends Polynomial {
     public double Discriminant() { // Вычислить дискриминант
         return getB() * getB() - 4 * getA() * getC();
     }
-    public String Multipliers() { // Разложение на множители
+    public Polynomial[] Multipliers() { // Разложение на множители
         double[] x = EquationRoots();
         if (x.length == 1) {
             if (x[0] == 0) {
-                return "x^(2)";
+                return new Polynomial [] { new Polynomial(new double[] { 0, 0, 1 }) };
             }
-            if (x[0] < 0) {
-                return "(x+" + -x[0] + ")^(2)";
-            }
-            return "(x" + -x[0] + ")^(2)";
+            return new Polynomial [] { new Polynomial(new double[] { x[0], 1 }),
+                    new Polynomial(new double[] { x[0], 1 }) };
         }
-        if (x[1] == 0) {
-            if (x[0] < 0) {
-                return "x(x+" + -x[0] + ")";
-            }
-            return "x(x" + -x[0] + ")";
-        }
-        if (x[0] == 0) {
-            if (x[1] < 0) {
-                return "x(x+" + -x[1] + ")";
-            }
-            return "x(x" + -x[1] + ")";
-        }
-        if (x[1] < 0) {
-            if (x[0] < 0) {
-                return "(x+" + -x[0] + "(x+" + -x[1] + ")";
-            }
-            return "(x" + -x[0] + "(x+" + -x[1] + ")";
-        }
-        if (x[0] < 0) {
-            return "(x+" + -x[0] + "(x" + -x[1] + ")";
-        }
-        return "(x" + -x[0] + "(x" + -x[1] + ")";
+        return new Polynomial [] { new Polynomial(new double[] { x[0], 1 }),
+                    new Polynomial(new double[] { x[1], 1 }) };
+
     }
     public double getA() {
         return getI(2);

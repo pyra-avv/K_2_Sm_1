@@ -15,6 +15,25 @@ public class Human {
         setPatronymic(patronymicH);
         setBirth(BirthH);
     }
+    public int Age(Data data) {
+        String[] arr = { "январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь",
+                "октябрь", "ноябрь", "декабрь" };
+        int CurrentMonth = -1;
+        int MonthBirth = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].equals(data.getMonth())) {
+                CurrentMonth = i;
+            }
+            if (arr[i].equals(Birth.getMonth())) {
+                MonthBirth = i;
+            }
+        }
+        if (CurrentMonth < MonthBirth || (CurrentMonth == MonthBirth && Birth.getDey() > data.getDey())) {
+            return data.getYear() - Birth.getYear() - 1;
+        }
+        return data.getYear() - Birth.getYear();
+    }
+
     public String getSurname() {
         return surname;
     }
