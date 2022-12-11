@@ -2,8 +2,8 @@ public class HumanService {
     public static Human[] Adults(Human[] arr, Data data) {
         int[] arrAge = ArrAge(arr, data);
         int k = 0;
-        for (int i = 0; i < arrAge.length; i++) {
-            if (arrAge[i] >= 18) {
+        for (int j : arrAge) {
+            if (j >= 18) {
                 k++;
             }
         }
