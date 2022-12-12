@@ -1,10 +1,10 @@
 public class ExpF implements IOneRealArgumentFunction {
     // Параметры
-    private double A;
-    private double B;
+    private final double A;
+    private final double B;
     // Границы
-    private double right;
-    private double left;
+    private final double right;
+    private final double left;
 
     public ExpF(double A, double B, double right, double left) {
         this.A = A;

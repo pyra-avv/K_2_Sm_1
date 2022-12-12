@@ -1,12 +1,12 @@
 public class RacF implements IOneRealArgumentFunction {
     // Параметры
-    private double A;
-    private double B;
-    private double C;
-    private double D;
+    private final double A;
+    private final double B;
+    private final double C;
+    private final double D;
     // Границы
-    private double right;
-    private double left;
+    private final double right;
+    private final double left;
 
     public RacF(double A, double B, double C, double D, double right, double left) {
         this.A = A;
