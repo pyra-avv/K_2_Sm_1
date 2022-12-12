@@ -1,4 +1,4 @@
-//import com.example.SquareTrinomial;
+package ru.omsu.imit;
 
 public class EquationSolver {
     SquareTrinomial equation;
@@ -16,7 +16,6 @@ public class EquationSolver {
     public SquareTrinomial getEquation() {
         return equation;
     }
-
     public void setEquation(SquareTrinomial equation) {
         this.equation = equation;
     }
